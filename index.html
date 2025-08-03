@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>James Khio S. Ramos - Front-End Resume</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+    --primary-gradient: linear-gradient(135deg, #6b7280 0%, #374151 100%);
+    --secondary-gradient: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+    --accent-color: #6b7280;
+    --text-dark: #1f2937;
+    --text-light: #6b7280;
+    --bg-light: #f9fafb;
+    --white: #ffffff;
+    --shadow: 0 10px 30px rgba(0,0,0,0.1);
+    --shadow-hover: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary-gradient);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+       
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-gradient);
+            z-index: -1;
+            animation: gradientShift 8s ease infinite;
+        }
+
+        @keyframes gradientShift {
+    0%, 100% { background: linear-gradient(135deg, #6b7280 0%, #374151 100%); }
+    50% { background: linear-gradient(135deg, #374151 0%, #6b7280 100%); }
+}
+
+        
+        .hero-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: var(--shadow);
+            object-fit: cover;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
+
+        .avatar:hover {
+            transform: scale(1.05);
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+       
+        .navbar {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(20px);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--text-dark) !important;
+            font-weight: 500;
+            padding: 0.8rem 1.5rem !important;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-nav .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--primary-gradient);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav .nav-link:hover::before {
+            width: 80%;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--accent-color) !important;
+        }
+
+    
+        .content-section {
+            padding: 4rem 0;
+        }
+
+        .card {
+            background: white;
+            border: none;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card-header {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 1.5rem;
+            border: none;
+        }
+
+        .card-header h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+    
+        .btn-primary {
+            background: var(--primary-gradient);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+            background: var(--primary-gradient);
+        }
+
+       
+        .skill-item {
+            background: var(--bg-light);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow);
+        }
+
+        .skill-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+      
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-gradient);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -25px;
+            top: 20px;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--accent-color);
+        }
+
+        .timeline-year {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin: 0.5rem 0;
+        }
+
+        .timeline-description {
+            color: var(--text-light);
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .project-tech {
+            display: inline-block;
+            background: var(--primary-gradient);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+        }
+
+    
+        .form-control {
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px 15px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+     
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+       
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .content-section {
+                padding: 2rem 0;
+            }
+            
+            .timeline {
+                padding-left: 1rem;
+            }
+            
+            .timeline-item {
+                margin-left: 1rem;
+            }
+        }
+
+      
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .slide-in-right {
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+ 
+    <section class="hero-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <img src="images/1x1.png" alt="James Khio S. Ramos" class="avatar fade-in">
+                    <h1 class="hero-title fade-in">James Khio S. Ramos</h1>
+                    <p class="hero-subtitle fade-in">
+                        <span class="text-gradient">Aspiring Front-End Developer</span> | Creative Thinker
+                    </p>
+                    <p class="hero-description fade-in">
+                        I'm an enthusiastic IT student specializing in Java and VB.NET desktop apps, eager to learn and build creative solutions through technology.
+                    </p>
+                    <a href="assets/Resume.pdf" class="btn btn-primary btn-lg fade-in" download>
+                        <i class="fas fa-download me-2"></i>Download Resume
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#education">Education</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    
+    <main>
+      
+        <section id="about" class="content-section">
+            <div class="container">
+                <div class="card slide-in-left">
+                    <div class="card-header">
+                        <h2><i class="fas fa-user me-3"></i>About Me</h2>
+                    </div>
+                    <div class="card-body">
+                        <p class="lead">
+                            Currently pursuing my studies at <strong>Dominican College of Tarlac</strong>, I have a passion for programming and creating user-friendly applications. My experience includes developing <mark>point-of-sale systems</mark> and various desktop applications using different programming languages.
+                        </p>
+                        <p>
+                            I believe in continuous learning and staying updated with the latest technologies. My goal is to become a proficient front-end developer who can create engaging and intuitive user experiences.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       
+        <section id="skills" class="content-section">
+            <div class="container">
+                <div class="card slide-in-right">
+                    <div class="card-header">
+                        <h2><i class="fas fa-code me-3"></i>Skills</h2>
+                    </div>
+                    <div class="card-body">
+                        <p class="mb-4">Key strengths: Creative thinking, eagerness to learn, basic programming, and practical UI skills. Adept in responsive layouts, photo editing, and community-driven design.</p>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="mb-3">Technical Skills</h4>
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <i class="fab fa-java"></i>
+                                    </div>
+                                    <h5>Java Programming</h5>
+                                    <p class="mb-0">Desktop applications and GUI development</p>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <i class="fas fa-code"></i>
+                                    </div>
+                                    <h5>Visual Basic .NET</h5>
+                                    <p class="mb-0">Windows forms and desktop applications</p>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <i class="fab fa-html5"></i>
+                                    </div>
+                                    <h5>HTML & CSS</h5>
+                                    <p class="mb-0">Web development fundamentals</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h4 class="mb-3">Creative Skills</h4>
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <i class="fas fa-palette"></i>
+                                    </div>
+                                    <h5>Photo Editing</h5>
+                                    <p class="mb-0">Canva, Photoshop, and design tools</p>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <i class="fas fa-lightbulb"></i>
+                                    </div>
+                                    <h5>Creative Thinking</h5>
+                                    <p class="mb-0">Problem-solving and innovation</p>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </div>
+                                    <h5>Willingness to Learn</h5>
+                                    <p class="mb-0">Continuous improvement mindset</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+     
+        <section id="education" class="content-section">
+            <div class="container">
+                <div class="card slide-in-left">
+                    <div class="card-header">
+                        <h2><i class="fas fa-graduation-cap me-3"></i>Education</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-year">2023 – Present</div>
+                                <div class="timeline-title">Dominican College of Tarlac, Inc.</div>
+                                <div class="timeline-description">
+                                    <strong>BS in Information Technology</strong><br>
+                                    <em>Currently pursuing degree in IT with focus on software development</em>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2021 – 2023</div>
+                                <div class="timeline-title">Precious High Academy Concepcion, Inc.</div>
+                                <div class="timeline-description">
+                                    <strong>STEM Track</strong><br>
+                                    <em>Senior High School with focus on Science, Technology, Engineering, and Mathematics</em>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2017 – 2021</div>
+                                <div class="timeline-title">Benigno Simeon Aquino National High School</div>
+                                <div class="timeline-description">
+                                    <strong>Junior High School</strong><br>
+                                    <em>Completed secondary education</em>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2011 – 2017</div>
+                                <div class="timeline-title">Concepcion West Central Elementary School</div>
+                                <div class="timeline-description">
+                                    <strong>Elementary Education</strong><br>
+                                    <em>Primary education foundation</em>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+      
+        <section id="projects" class="content-section">
+            <div class="container">
+                <div class="card slide-in-right">
+                    <div class="card-header">
+                        <h2><i class="fas fa-project-diagram me-3"></i>Projects & Experience</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-4">
+                            <div class="col-lg-4 col-md-6">
+                                <a href="https://imgur.com/a/WofGSRA" target="_blank" class="project-card d-block">
+                                    <img src="https://i.imgur.com/Cwo1lLd.jpeg" alt="Café POS System" class="project-image">
+                                    <div class="project-content">
+                                        <h5 class="project-title">Café POS System</h5>
+                                        <p class="project-description">Built a point-of-sale system during my 1st year. Features transaction management and is designed for small coffee shops.</p>
+                                        <span class="project-tech">Java</span>
+                                        <span class="project-tech">GUI</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <a href="https://imgur.com/a/HsTXX30" target="_blank" class="project-card d-block">
+                                    <img src="https://i.imgur.com/i6RuYxD.png" alt="POS VB.NET System" class="project-image">
+                                    <div class="project-content">
+                                        <h5 class="project-title">POS System (VB.NET)</h5>
+                                        <p class="project-description">Simple point-of-sale developed for Systems Analysis and Design subject. Features inventory and transaction management.</p>
+                                        <span class="project-tech">VB.NET</span>
+                                        <span class="project-tech">Windows Forms</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <a href="https://imgur.com/a/6xBpcV2" target="_blank" class="project-card d-block">
+                                    <img src="https://i.imgur.com/c4ZHVng.png" alt="Calculator VB.NET" class="project-image">
+                                    <div class="project-content">
+                                        <h5 class="project-title">Simple Calculator</h5>
+                                        <p class="project-description">A basic calculator application with standard arithmetic operations and user-friendly interface.</p>
+                                        <span class="project-tech">VB.NET</span>
+                                        <span class="project-tech">Desktop App</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <a href="https://imgur.com/a/LF7Ff1b" target="_blank" class="project-card d-block">
+                                    <img src="https://i.imgur.com/H8J6drl.png" alt="Lucky 9 Game" class="project-image">
+                                    <div class="project-content">
+                                        <h5 class="project-title">Lucky 9 Card Game</h5>
+                                        <p class="project-description">Card game implementation designed for local gameplay without database dependency.</p>
+                                        <span class="project-tech">VB.NET</span>
+                                        <span class="project-tech">Game Logic</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <a href="https://imgur.com/a/aPtHBtC" target="_blank" class="project-card d-block">
+                                    <img src="https://i.imgur.com/ovAGF0R.png" alt="Forex Exchange" class="project-image">
+                                    <div class="project-content">
+                                        <h5 class="project-title">Forex Exchange Converter</h5>
+                                        <p class="project-description">Currency exchange converter allowing users to convert between different currencies easily.</p>
+                                        <span class="project-tech">VB.NET</span>
+                                        <span class="project-tech">Financial</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <a href="https://imgur.com/a/UVWgP7h" target="_blank" class="project-card d-block">
+                                    <img src="https://i.imgur.com/Rie7xxi.png" alt="Loan Management" class="project-image">
+                                    <div class="project-content">
+                                        <h5 class="project-title">Loan Management System</h5>
+                                        <p class="project-description">Manages loan records and calculations designed for simple offline use without database.</p>
+                                        <span class="project-tech">VB.NET</span>
+                                        <span class="project-tech">Finance</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="content-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="card slide-in-left">
+                            <div class="card-header">
+                                <h2><i class="fas fa-envelope me-3"></i>Contact</h2>
+                            </div>
+                            <div class="card-body">
+                                <div class="text-center mb-4">
+                                    <p class="lead">
+                                        <i class="fas fa-envelope me-2"></i>
+                                        <a href="mailto:khioramoz01@gmail.com" class="text-decoration-none">khioramoz01@gmail.com</a>
+                                    </p>
+                                </div>
+                                
+                                <form action="/action_page.php" method="post">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="name" class="form-label">Your Name</label>
+                                                <input type="text" class="form-control" id="name" name="name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="email" class="form-label">Your Email</label>
+                                                <input type="email" class="form-control" id="email" name="email" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="subject" class="form-label">Subject</label>
+                                        <input type="text" class="form-control" id="subject" name="subject" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="message" class="form-label">Your Message</label>
+                                        <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary btn-lg">
+                                            <i class="fas fa-paper-plane me-2"></i>Send Message
+                     </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="comments" class="content-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="card slide-in-right">
+                            <div class="card-header">
+                                <h2><i class="fas fa-comments me-3"></i>Leave a Comment</h2>
+                            </div>
+                            <div class="card-body">
+                                <form action="/comments_page.php" method="post">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="commentName" class="form-label">Your Name</label>
+                                                <input type="text" class="form-control" id="commentName" name="commentName" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="commentEmail" class="form-label">Your Email (Optional)</label>
+                                                <input type="email" class="form-contr
+
+ <p class="mb-0">The Lucky 9 card game caught my attention! It's great to see you exploring game development alongside business applications. Your versatility in programming is really impressive for someone at your level.</p>
+                                </div>
+
+                                <div class="comment-item mb-3 p-3 bg-light rounded">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+          z                              <strong class="text-primary">Lebron James</strong>
+                                        <small class="text-muted">3 weeks ago</small>
+                                    </div>
+                                    <p class="mb-0">As a fellow IT student, I find your portfolio very inspiring! The progression from simple calculators to complex POS systems shows great learning curve. Best of luck with your front-end development journey!</p>
+                                </div>
+
+                                <div class="text-center mt-4">
+                                    <button class="btn btn-outline-primary" onclick="loadMoreComments()">
+                                        <i class="fas fa-chevron-down me-2"></i>Load More Comments
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
